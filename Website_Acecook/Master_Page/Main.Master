@@ -1,0 +1,299 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Website_Acecook.Master_Page.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+	<style>
+		.header-items {
+			height: 40px;
+			width: auto;
+			font-size: 15px;
+			align-items:center;
+			font-family:Bahnschrift SemiBold;
+			color:#595959;
+			margin-top: 0; /* Đặt margin-top về 0 */
+			padding-top: 0; /* Đặt padding-top về 0 */
+		}
+
+		.item a{
+			text-decoration:none;
+			color:#595959;
+		}
+
+		.header-items img{
+			vertical-align: middle;
+			height:30px;
+			width:30px;
+		}
+
+		.item{
+			float:right;
+		}
+
+		.item {
+			border-right: 1px solid #ebe8e8; /* Thêm đường viền bên phải */
+			padding-right: 20px; /* Tạo khoảng cách giữa nội dung và đường viền */
+			padding-left:20px;
+			padding-top:20px;
+			padding-bottom:20px;
+		}
+
+		.no-border {
+			border-right: none; /* Loại bỏ đường viền bên phải */
+			float:right;
+			padding-right: 20px; /* Tạo khoảng cách giữa nội dung và đường viền */
+			padding-left:20px;
+			padding-top:20px;
+			padding-bottom:20px;
+		}
+
+		.header-bar {
+			height: 150px;
+			width: 100%; /* Thay đổi chiều rộng thành 100% để nó căn chiều rộng của trang */
+			background-color: #f80000;
+			margin: 0 auto; /* Đảm bảo phần header-bar căn giữa theo chiều ngang */
+			border-left: none; /* Loại bỏ viền bên trái */
+			border-right: none; /* Loại bỏ viền bên phải */
+			margin-bottom: 0;
+			margin-top:25px;
+		}
+
+		  .header-bar img{
+			height:auto;
+			width:auto;
+		  }
+
+		.buttons button {
+			border: none;
+			font-family: Bahnschrift SemiBold;
+			font-size: 50px;
+			background-color: transparent;
+			cursor: pointer;
+			text-decoration: none; /* Loại bỏ gạch chân mặc định */
+			margin-top: 10px;
+			margin-left:15px;
+			margin-right:15px;
+			width:100px;
+			vertical-align:middle;
+		}
+
+			.buttons button:hover{
+				/*text-decoration:underline;*/
+				text-decoration-color:white;
+				border-bottom: 2px solid white;  /*Hiển thị gạch chân khi di chuột qua 
+*/			}
+
+
+	    .auto-style1 {
+            text-align: right;
+        }
+        .button-style {
+            text-align: center;
+			font-size:15px;
+			width:100px;
+			color:white;
+        }
+	    .auto-style2 {
+            width: 45px;
+        }
+
+		.footer-bar{
+			width:100%;
+			background-color:#efefef;
+			display: flex;
+			justify-content: center; /* Căn giữa các phần tử theo chiều ngang */
+			/*align-items: center; *//* Căn giữa các phần tử theo chiều dọc */
+			padding-top:20px;
+			font-family: Bahnschrift Light;
+			font-size: 12px;
+		}
+			
+		.footer .list-footer {
+			padding-top: 22px;
+		}
+
+		.list-unstyled {
+			margin: 0;
+			list-style: none;
+		}
+
+		.text-right {
+			text-align: right;
+		}
+
+		.footer .list-footer li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+	   
+		 a.icons {
+			width: 40px;  /*Điều chỉnh chiều rộng của hình ảnh */
+			height: 40px;  /*Điều chỉnh chiều cao của hình ảnh */
+			border-radius: 50%;  /*Thiết lập đường viền tròn*/ 
+			line-height:38px;
+			display:inline-block;
+			text-align:center;
+		}
+			 a.icons.facebook{
+				 background-color:#ffffff;
+				 color:#a7a7a7;
+				 padding:5px, 5px;
+			 }
+
+			 a.icons.linkedIn{
+				 background-color:#ffffff;
+				 color:#a7a7a7;
+				 padding:5px, 5px;
+			 }
+
+			  a.icons.Yt{
+				 background-color:#ffffff;
+				 color:#a7a7a7;
+				 padding:5px, 5px;
+			 }
+		.list-icons{
+			margin-right:10px;
+			margin-left:30px;
+		}
+	   
+		.copy-right{
+			padding-top: 22px;
+			width:480px;
+			margin-left:30px;
+		}
+	</style>
+</head>
+<body>
+		<%--<form id="form1" runat="server">--%>
+		<header>
+		<div class="header-items">
+
+			<div class="items item">
+			<%--Acecook USA--%>
+			<a href="javascript:openUS()">
+				<img src="../Icons/usa-35.png" />Acecook USA
+			</a>
+			</div>
+
+			<div class="items item">
+			<%--Acecook Nhật Bản--%>
+			<a href="javascript:openJapan()">
+				<img src="../Icons/japan-35.png" />Acecook Nhật Bản
+			</a>
+			</div>
+
+			<div class="items item">
+			<%--Liên hệ--%>
+            <img src="../Icons/email-35.png" /><strong style="color:#f80000">Eshop@acecookvietnam.com</strong>
+			</div>
+
+			<div class="items item">
+			<%--Hotline--%>
+            <img src="../Icons/phone-35.png"/>Hotline <strong style="color:#f80000"> 033 222 8146 </strong> hoặc <strong style="color:#f80000">091 228 05207</strong>
+			</div>
+		</div>
+		<div>
+		<table class="header-bar">
+				<tr>
+					<td>
+						<a href="/TrangChu.aspx">
+							<img src="https://acecookvietnam.vn/wp-content/themes/acecook/assets/images/logo-acecook.png" alt="logo acecook">
+						</a>
+					</td>
+					<td class="buttons">
+						<button onclick="goToPage('/TrangChu.aspx')"><img src="../Icons/home-45.png" class="auto-style2" /></button>
+						<button onclick="goToPage('/TTCongTy.aspx')"><p class="button-style">THÔNG TIN CỬA HÀNG</p></button> 
+						<button onclick="goToPage('/SanPham_trcDN.aspx')"><p class="button-style">SẢN PHẨM</p></button>
+						<button onclick="goToPage('/QTSX.aspx')"><p class="button-style">QUY TRÌNH SẢN XUẤT</p></button>
+						<button onclick="goToPage('/KM.aspx')" style="width:120px;"><p class="button-style" style="width:120px">TRUYỀN THÔNG KHUYẾN MÃI</p></button>
+						<button onclick="goToPage('/AT.aspx')"><p class="button-style">GÓC ẨM THỰC</p></button>
+						<button onclick="goToPage('/TTGiaoNhan.aspx')" style="width:90px;"><p class="button-style" style="width:90px">THÔNG TIN GIAO NHẬN</p></button>
+						<button onclick="goToPage('/CHTG.aspx')"><p class="button-style">CÂU HỎI THƯỜNG GẶP</p></button>
+						<button onclick="goToPage('/MuaHang_trcDK_DN.aspx')"><p class="button-style">MUA HÀNG TRỰC TUYẾN</p></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</header>
+	<script>
+        function openJapan() {
+            window.location.href = "https://www.acecook.co.jp/";
+		}
+
+        function openUS() {
+            window.location.href = "https://acecook.us/";
+		}
+
+        function goToPage(url) {
+            window.location.href = url;
+		}
+
+        
+
+    </script>
+				<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+				</asp:ContentPlaceHolder>
+	<footer>
+		<table class="footer-bar">
+			<tr>
+				<td>
+					<img src="https://acecookvietnam.vn/wp-content/themes/acecook/assets/images/logo_footer.png" alt="logo acecook">
+				</td>
+
+				<td style="width:480px">
+					<%--<p class="copy-right">BẢN QUYỀN © 2020 THUỘC VỀ ACECOOK VIET NAM</p>--%>
+
+					<p class="copy-right">
+						ACECOOK VIETNAM<br>
+						Địa chỉ: Lô số II-3,Đường số 11,Nhóm CN II, Khu Công nghiệp Tân Bình, Phường Tây Thạnh, Quận Tân Phú, Thành phố Hồ Chí Minh, Việt Nam<br>
+						Điện thoại: 033 222 8146 hoặc 091 228 5207 <br>Email: info@acecookvietnam.com<br>
+					</p>
+				</td>
+
+				<td style="width:250px;">
+					<div style="width:250px;">
+						<ul class="list-unstyled list-footer text-right" style="display: inline-block;">
+							<li style="display: inline-block; margin-right: 10px;">
+								<a>
+									ĐIỀU KHOẢN SỬ DỤNG
+								</a>
+							</li>
+							<li style="display: inline-block;">
+								<a>
+									LIÊN HỆ
+								</a>
+							</li>
+						</ul>
+					</div>
+				</td>
+
+				<td>
+					<div class="list-icons">
+						<div>
+							<a href="#" class="icons facebook">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+
+							<a href="#" class="icons linkedIn">
+								<i class="fab fa-linkedin-in"></i>
+							</a>
+
+								<a href="#" class="icons Yt">
+								<i class="fab fa-youtube"></i>
+							</a>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</footer>
+<%--</form>--%>
+</body>
+	
+</html>

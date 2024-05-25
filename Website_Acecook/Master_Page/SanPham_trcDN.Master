@@ -1,0 +1,295 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SanPham_trcDN.master.cs" Inherits="Website_Acecook.Master_Page.SanPham_trcDN" %>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .header{
+            height: 100px;
+            width: auto;
+            background-color: #f80000;
+            font-size: 15px;
+            font-family: Bahnschrift SemiBold;
+            color: #595959;
+            margin-top: 0; /* Đặt margin-top về 0 */
+            padding-top: 30px; /* Đặt padding-top về 0 */
+
+        }
+
+        .header-items{
+            display: inline-block;
+            vertical-align: middle;
+            padding:5px;    
+        }
+
+         .search-container {
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fff;
+            position: relative;
+            display: flex;
+            margin-left:250px;
+        }
+
+        .search-input {
+            width: 600px;
+            padding: 10px;
+            font-family: Bahnschrift SemiBold;
+            font-size: 15px;
+            border: none;
+            padding-right: 60px; /* Để chứa nút tìm kiếm */
+            outline: none; /* Loại bỏ khung đen */
+        }
+
+        .search-button {
+            position: absolute;
+            margin-top:5px;
+            margin-bottom:5px;
+            right:5px;
+            border-radius: 20px;
+            background-color: #f80000;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            height:30px;
+            width:40px;
+        }
+
+        div.login-signup{
+            margin-left:60px;
+        }
+
+        .login-signup button{
+            border:none;
+            font-family: Bahnschrift SemiBold;
+			font-size: 15px;
+            color:white;
+			background-color: transparent;
+			cursor: pointer;
+			text-decoration: none; /* Loại bỏ gạch chân mặc định */
+            vertical-align:middle;
+            text-align:left;
+        }
+
+        .login-signup img{
+            vertical-align:middle;
+            margin-left:20px;
+        }
+
+        .login-signup i{
+            vertical-align:middle;
+        }
+
+        .buttons{
+            text-align:center;
+            margin-top:10px;
+        }
+
+            .buttons button{
+                border:none;
+                font-family: Bahnschrift SemiBold;
+			    font-size: 20px;
+                width:170px;
+                background-color:transparent;
+            }
+
+                .buttons button:hover{
+                    text-decoration:underline;
+                    text-decoration-color:#f80000;
+                }
+
+        .auto-style1 {
+            width: 270px;
+            text-align:left;
+            float:left;
+        }
+        .auto-style2 {
+            width: 200px;
+            height:80px;
+            font-family:Bahnschrift; 
+            padding-top:10px;
+        }
+         .button-link {
+            text-decoration: none;
+            color:black;
+            line-height: 3; 
+        }
+        .button-link:active {
+            color: #4B8D48; /* Thay đổi màu sắc khi liên kết được nhấp vào */
+        }
+
+        .div-container {
+        margin-right: 25px;
+        /*padding: 45px;*/
+        padding-bottom: 1px;
+        padding-top: 1px;
+        border-radius: 1px;
+        transition: all 0.3s; /* Tạo hiệu ứng mượt khi hover */
+        font-size:15px;
+        }
+
+            .div-container:hover {
+                background-color: #f69191; /* Thay đổi màu nền khi hover */
+                /*text-decoration:underline;*/
+            } 
+
+       .div-cp{
+           float:right;
+           margin-top:auto;
+           width:1118px;
+       }
+            
+
+       .sl-giohang{
+            font-family:Bahnschrift SemiBold;
+            font-size:15px;
+            color:#f80000;
+            text-decoration:none;
+            position:absolute; 
+            top: 50px; 
+            left: 94%;
+            border:solid;
+            border-radius:30px;
+            background-color:white;
+            width:20px;
+            height:20px;
+            text-align:center;
+            padding-top:1px;
+        }
+
+       input#priceRange{
+           font-family:Bahnschrift SemiBold;
+           background-color:#f80000;
+       }
+
+       .div-loc{
+           left:0;
+           border:solid 1px;
+           border-color:#f80000;
+           height:80px;
+           font-size:15px;
+            margin-top:20px;
+       }
+
+         #priceRange {
+            background-color: #f80000;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="header">
+                <div class="header-items">
+                    <a href="/TrangChu.aspx">
+                        <img src="https://acecookvietnam.vn/wp-content/themes/acecook/assets/images/logo-acecook.png" alt="logo acecook">
+                    </a>
+                </div>
+                <div class="header-items">
+                    <div class="search-container">
+                        <asp:TextBox ID="txtTenSanPham" runat="server" class="search-input" placeholder="Tìm kiếm sản phẩm..."> </asp:TextBox>
+                       <%-- <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm...">--%>
+                        <button type="submit" class="search-button" runat="server" OnServerClick="btnTimKiem_Click">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                 </div>
+                <div class="header-items">
+                    <div style="margin-right:50px;" class="login-signup">
+                        <i class="fas fa-user" style="color:white; width:32px; height:32px; margin-top:15px; margin-right:3px;"></i>
+                        <button onclick="goToPage('/DangKy.aspx')" style="width:70px">Đăng ký</button>
+                        <button onclick="goToPage('/DangNhap.aspx')" style="width:90px">Đăng nhập</button>
+                        <a href="GioHang_TrcDN.aspx">
+                            <img src="../Icons/cart-32.png" style="width:32px; height:32px" />
+                        </a>
+                        <asp:Label ID="lblSoLuong" runat="server" CssClass="sl-giohang" Text="0"></asp:Label>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button onclick="goToPage('/SanPham_trcDN.aspx')" >Tất cả sản phẩm</button>
+               <%-- <button onclick="goToPage('/DangNhap.aspx')">Combo</button>
+                 <button onclick="goToPage('/DangNhap.aspx')">Khuyến mãi</button>--%>
+            </div>
+        </header>
+        <main>
+            <div>
+                <table class="auto-style1" align="center">
+                    <tr>
+                        <td class="auto-style2">
+                            <p style="width:200px; font-size:18px">Danh mục sản phẩm</p>
+                            <asp:DataList ID="DataList1" runat="server" OnItemCommand="DLDanhMuc_ItemCommand" RepeatDirection="Vertical" Width="280px">
+                                <ItemTemplate>
+                                    <div class="div-container">
+                                        <asp:HyperLink ID="hldanhmuc" runat="server" NavigateUrl='<%# "/SanPham_trcDN.aspx?maloai=" + Eval("MaLSP") %>' 
+                                            Text='<%# Eval("TenLSP") %>' CommandName="DanhMucClick" CommandArgument='<%# Eval("MaLSP") %>' CssClass="button-link" style="text-align: center;"></asp:HyperLink>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:DataList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="margin-top:30px; margin-left: 20px; font-family: Bahnschrift SemiBold; text-align: center;" class="div-loc">
+                                <label style="margin-bottom: 10px;">Lọc sản phẩm theo Giá</label><br />
+                                <input type="range" id="priceRange" min="70000" max="400000" step="1000" value="70000" oninput="updateProductList()" style="width: 70%; color: background-color:#f80000;">
+                                <span id="priceDisplay">
+                                <br />
+                                70.000 đ</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="maxPriceDisplay">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400.000 đ</span>
+                            </div>
+                        </td>
+                    </tr>
+                   
+                </table>
+           
+
+                        <%--<td>--%>
+                            <div class="div-cp">
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                                </asp:ContentPlaceHolder>
+                            </div>
+                       <%-- </td>
+                    </tr>--%>
+               <%-- </table>--%>
+            </div>
+        </main>
+ 
+        <br />
+        <script>
+            function goToPage(url) {
+                window.location.href = url;
+            }
+
+            function updateProductList() {
+                var priceRange = document.getElementById("priceRange").value;
+
+                // Sử dụng AJAX để gọi phương thức UpdateProductListByPriceRange ở trang SanPham_trcDN.aspx
+                $.ajax({
+                    type: "POST",
+                    url: "SanPham_trcDN.aspx/UpdateProductListByPriceRange",
+                    data: JSON.stringify({ priceRange: priceRange }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        // Xử lý dữ liệu trả về nếu cần
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        // Xử lý lỗi nếu có
+                    }
+                });
+            }
+        </script>
+    </form>
+
+</body>
+</html>

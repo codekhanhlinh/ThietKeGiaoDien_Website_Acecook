@@ -1,0 +1,177 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MuaHang_TruocDK,DN.master.cs" Inherits="Website_Acecook.Master_Page.MuaHang_TruocDK_DN" %>
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .header{
+            height: 100px;
+            width: auto;
+            background-color: #f80000;
+            font-size: 15px;
+            font-family: Bahnschrift SemiBold;
+            color: #595959;
+            margin-top: 0; /* Đặt margin-top về 0 */
+            padding-top: 30px; /* Đặt padding-top về 0 */
+
+        }
+
+        .header-items{
+            display: inline-block;
+            vertical-align: middle;
+            padding:5px;    
+        }
+
+         .search-container {
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #fff;
+            position: relative;
+            display: flex;
+            margin-left:250px;
+        }
+
+        .search-input {
+            width: 600px;
+            padding: 10px;
+            font-family: Bahnschrift SemiBold;
+            font-size: 15px;
+            border: none;
+            padding-right: 60px; /* Để chứa nút tìm kiếm */
+            outline: none; /* Loại bỏ khung đen */
+        }
+
+        .search-button {
+            position: absolute;
+            margin-top:5px;
+            margin-bottom:5px;
+            right:5px;
+            border-radius: 20px;
+            background-color: #f80000;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            height:30px;
+            width:40px;
+        }
+
+        div.login-signup{
+            margin-left:60px;
+        }
+
+        .a1{
+            font-family: Bahnschrift SemiBold;
+			font-size: 15px;
+            color:white;
+			background-color: transparent;
+			text-decoration: none; /* Loại bỏ gạch chân mặc định */
+            vertical-align:middle;
+            text-align:left;
+            margin-left:10px;
+        }
+        .a1:hover{
+            text-decoration-color:white;
+		    border-bottom: 2px solid white;
+        }
+
+        .login-signup img{
+            vertical-align:middle;
+            margin-left:20px;
+        }
+
+        .login-signup i{
+            vertical-align:middle;
+        }
+  
+        .buttons{
+            text-align:center;
+            margin-top:10px;
+        }
+
+            a{
+                border:none;
+                font-family: Bahnschrift SemiBold;
+			    font-size: 20px;
+                width:170px;
+                background-color:transparent;
+                text-decoration:none;
+                color:black;
+            }
+
+                .buttons a:hover{
+                    text-decoration:underline;
+                    text-decoration-color:#f80000;
+                }
+
+            .sl-giohang{
+            font-family:Bahnschrift SemiBold;
+            font-size:15px;
+            color:#f80000;
+            text-decoration:none;
+            position:absolute; 
+            top: 50px; 
+            left: 91%;
+            border:solid;
+            border-radius:30px;
+            background-color:white;
+            width:20px;
+            height:20px;
+            text-align:center;
+            padding-top:1px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <div class="header">
+                <div class="header-items">
+                    <img src="https://acecookvietnam.vn/wp-content/themes/acecook/assets/images/logo_footer.png" alt="logo acecook">
+                </div>
+                <div class="header-items">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm...">
+                        <button type="submit" class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                 </div>
+                 <div class="header-items">
+                    <div style="margin-right:50px;" class="login-signup">
+                        <i class="fas fa-user" style="color:white; width:32px; height:32px; margin-top:15px; margin-right:3px;"></i>
+                       <%-- <button onclick="goToPage('/DangKy.aspx')" style="width:70px">Đăng ký</button>
+                        <button onclick="goToPage('/DangNhap.aspx')" style="width:90px">Đăng nhập</button>--%>
+                        <a class="a1" href="/DangKy.aspx" style="color:white;">Đăng ký</a>
+                        <a class="a1" href="/DangNhap.aspx" style="color:white;">Đăng nhập</a>
+                        <a href="GioHang_TrcDN.aspx">
+                            <img src="../Icons/cart-32.png" style="width:32px; height:32px" />
+                        </a>
+                        <asp:Label ID="lblSoLuong" runat="server" CssClass="sl-giohang" Text="0"></asp:Label>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons">
+              <%--  <button onclick="goToPage('SanPham_trcDN.aspx')" >Tất cả sản phẩm</button>--%>
+                <a href="/SanPham_trcDN.aspx">Tất cả sản phẩm</a>
+               <%-- <button onclick="goToPage('/DangNhap.aspx')">Combo</button>
+                <button onclick="goToPage('/DangNhap.aspx')">Khuyến mãi</button>--%>
+            </div>
+        </header>
+ 
+        <br />
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+
+</body>
+</html>
